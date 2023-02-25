@@ -1,4 +1,3 @@
-from hashlib import sha256
 from tkinter import messagebox
 from forms.register.desing_register import DesingRegister
 from modelo.conexion import conexionDB
@@ -25,6 +24,9 @@ class FormRegister(DesingRegister):
 				self.ventana.destroy()
 				messagebox.showinfo(message=f"El usuario {usu} registrado exitosamente.",title="Mensaje")
 			else:
-				messagebox.showerror(message="Las contraseñas no coinciden.",title="Mensaje")
+				self.message['text'] = 'Las contraseñas no coinciden.'
+				self.password.delete(0)
+				self.confirmation.delete(0)
+				self.password.focus()
 		else:
-			messagebox.showerror(message="El usuario y la contraseña son requeridos.",title="Ups!, algo ha salido mal")
+			self.message['text'] = 'Todos los campos son obligatorios.'

@@ -21,13 +21,13 @@ class FormLogin(DesingLogin):
 		usu = self.usuario.get()
 		password = self.password.get()
 		if self.validar():
-			query = (f"SELECT * FROM usuarios WHERE usuario=? AND pass=?")
+			query = (f"SELECT * FROM Usuarios WHERE usuario=? AND pass=?")
 			parameters = (usu,password)
 			usuario = conexion.run_query(query, parameters)
 			# if usu not in usuario:
 			if usuario.fetchall():
-				messagebox.showinfo(message=f"Bienvenido {usu}.",title="Mensaje")
-				self.aplicaion.destroy()
+				# messagebox.showinfo(message=f"Bienvenido {usu}.",title="Mensaje")
+				self.aplicacion.destroy()
 				MasterPanel()
 			else:
 				messagebox.showerror(message="El usuario o la contraseña son incorrectos.",title="Ups!, algo ha salido mal")
